@@ -1,6 +1,6 @@
-import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
-import { Report } from 'notiflix/build/notiflix-report-aio';
 import SlimSelect from 'slim-select';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
 const refs = {
   select: document.querySelector('.select-breed'),
