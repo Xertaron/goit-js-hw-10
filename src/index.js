@@ -21,9 +21,6 @@ const condition = {
 
 const slimSelect = new SlimSelect({
   select: refs.select,
-  settings: {
-    allowDeselect: true,
-  },
 });
 
 refs.select.addEventListener('change', onSelectChange);
