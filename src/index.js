@@ -1,7 +1,9 @@
 import SlimSelect from 'slim-select';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
-
+import axios, { Axios } from 'axios';
+axios.defaults.headers.common['x-api-key'] =
+  'live_sDzgYyI0zW5jojywScALtiCySJRBMTtVMyoNMwqizuXCadZ4oFLvfH6Pn2BmehVs';
 const refs = {
   select: document.querySelector('.select-breed'),
   catInfo: document.querySelector('.cat-info'),
@@ -9,6 +11,16 @@ const refs = {
 };
 
 let isLoading = true;
+
+const slimSelect = new SlimSelect({
+  select: refs.select,
+});
+
+const axios = new Axios({
+  common:
+    'live_sDzgYyI0zW5jojywScALtiCySJRBMTtVMyoNMwqizuXCadZ4oFLvfH6Pn2BmehVs',
+  cancelToken: slimSelect.settings.allowDeselect,
+});
 
 const condition = {
   hide(element) {
@@ -18,10 +30,6 @@ const condition = {
     element.classList.remove('is-hidden');
   },
 };
-
-const slimSelect = new SlimSelect({
-  select: refs.select,
-});
 
 refs.select.addEventListener('change', onSelectChange);
 
@@ -50,7 +58,6 @@ condition.show(refs.loader);
 fetchBreeds()
   .then(data => {
     createSelectOptionMarkup(data);
-
     condition.show(refs.select);
     condition.hide(refs.loader);
   })
