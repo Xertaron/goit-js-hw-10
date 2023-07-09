@@ -135,4 +135,10 @@ button {
   background-color: orange;
   border-radius: 20px;
   border-color: orange;
+  cursor: pointer;
+}
+button:hover {
+  background-color: grey;
+  border-color: grey;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms;
 }
